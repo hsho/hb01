@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018/9/17 ?W?? 08:43:36 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+	<class name="beans.HR02" table="HR02">
+		<composite-id class="beans.pk.HR02pk" mapped="true">
+			<key-many-to-one name="dept" class="beans.HR01" column="DEPT"/>
+			<key-property name="tid">
+				<column name="TID" length="1"/>
+			</key-property>
+		</composite-id>
+		<property name="beg1" type="java.lang.String">
+			<column name="BEG1" length="4"/>
+		</property>
+		<property name="end1" type="java.lang.String">
+			<column name="END1" length="4"/>
+		</property>
+		<property name="beg2" type="java.lang.String">
+			<column name="BEG2" length="4"/>
+		</property>
+		<property name="end2" type="java.lang.String">
+			<column name="END2" length="4"/>
+		</property>
+		<property name="beg3" type="java.lang.String">
+			<column name="BEG3" length="4"/>
+		</property>
+		<property name="end3" type="java.lang.String">
+			<column name="END3" length="4"/>
+		</property>
+		<property name="beg4" type="java.lang.String">
+			<column name="BEG4" length="4"/>
+		</property>
+		<property name="end4" type="java.lang.String">
+			<column name="END4" length="4"/>
+		</property>
+		<many-to-one name="hr01" class="beans.HR01" insert="false" update="false">
+			<column name="DEPT"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>
