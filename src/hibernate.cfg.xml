@@ -34,6 +34,7 @@
 
         <mapping resource="beans/HR01.hbm.xml"/>
         <mapping resource="beans/HR02.hbm.xml"/>
+        <!-- <mapping class="beans.HR_BUMEN"/> -->
 
     </session-factory>
 

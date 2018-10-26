@@ -9,6 +9,7 @@ import org.hibernate.engine.SessionImplementor;
 import org.hibernate.impl.QueryImpl;
 
 import beans.HR01;
+import beans.BuMen;
 
 @SuppressWarnings("rawtypes")
 public class Generator {
@@ -29,23 +30,26 @@ public class Generator {
 	
 	public void hr01Dao() {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		QueryImpl query = (QueryImpl) session.createQuery("from HR01");
+		Query query = (QueryImpl) session.createQuery("from HR01");
+		String queryString = query.getQueryString();
+		System.err.println(queryString);
+		List<HR01> list = query.list();
 		SessionImplementor sessionImpl = ((SessionImplementor)session);
 		sessionImpl.list("", null);
 		session.getTransaction().commit();
 	}
 	
-	public static void main(String[] args) {
+	public static void test__HR01() {
 		Generator generator = new Generator();
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		SessionFactory sessionFactory = HibernateAnnotationUtil.getSessionFactory();
 		Session session = sessionFactory.getCurrentSession();
 		
+		session.beginTransaction();
+		generator.insertHR01(session, "001", "x001", null);
+		generator.insertHR01(session, "002", "x002", null);
+		session.getTransaction().commit();
 		
-//		session.beginTransaction();
-//		generator.insertHR01(session, "001", "x001", null);
-//		generator.insertHR01(session, "002", "x002", null);
-//		session.getTransaction().commit();
-
+		session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
 		List hr01List = generator.queryHR01(session);
 		for(int i = 0; i < hr01List.size(); i++) {
@@ -54,8 +58,40 @@ public class Generator {
 		}
 		session.getTransaction().commit();
 		
+		HibernateAnnotationUtil.getSessionFactory().close();
+	}
+	
+	public void insertHR_BUMEN(Session session, 
+			String bmno, String pbmno, String bmnm, String bmdetail) {
+		BuMen bumen = new BuMen();
+		bumen.setBMNO(bmno);
+		bumen.setPBMNO(pbmno);
+		bumen.setBMNM(bmnm);
+		bumen.setBMDETAIL(bmdetail);
+		session.save(bumen);
+	}
+	
+	
+	public static void test__HR_BUMEN() {
+		Generator generator = new Generator();
+		SessionFactory sessionFactory = HibernateAnnotationUtil.getSessionFactory();
+		Session session = sessionFactory.getCurrentSession();
 		
-		HibernateUtil.getSessionFactory().close();
+		session.beginTransaction();
+		generator.insertHR_BUMEN(session, "00", "00", null, null);
+		generator.insertHR_BUMEN(session, "0001", "00", null, null);
+		session.getTransaction().commit();
+		
+		HibernateAnnotationUtil.getSessionFactory().close();
+	}
+	
+	
+	
+	public static void main(String[] args) {
+		new Generator().hr01Dao();
+		
+		//test__HR01();
+		//test__HR_BUMEN();
 	}
 	
 //	public static void main(String[] args) {
