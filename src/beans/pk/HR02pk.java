@@ -10,6 +10,7 @@ import javax.persistence.Table;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.hibernate.validator.Length;
 
 
 /**
@@ -46,6 +47,7 @@ public class HR02pk implements Serializable {
 	 * @return the dept
 	 */
 	@Column(name = "DEPT")
+	@Length(max=30)
 	public String getDept() {
 		return dept;
 	}
@@ -63,6 +65,7 @@ public class HR02pk implements Serializable {
 	 * @return the tid
 	 */
 	@Column(name = "TID")
+	@Length(max=1)
 	public String getTid() {
 		return tid;
 	}

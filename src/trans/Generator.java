@@ -9,6 +9,8 @@ import org.hibernate.engine.SessionImplementor;
 import org.hibernate.impl.QueryImpl;
 
 import beans.HR01;
+import utils.HibernateAnnotationUtil;
+import utils.HibernateUtil;
 import beans.BuMen;
 
 @SuppressWarnings("rawtypes")
@@ -61,8 +63,7 @@ public class Generator {
 		HibernateAnnotationUtil.getSessionFactory().close();
 	}
 	
-	public void insertHR_BUMEN(Session session, 
-			String bmno, String pbmno, String bmnm, String bmdetail) {
+	public void insertHR_BUMEN(Session session, String bmno, String pbmno, String bmnm, String bmdetail) {
 		BuMen bumen = new BuMen();
 		bumen.setBMNO(bmno);
 		bumen.setPBMNO(pbmno);
@@ -88,10 +89,10 @@ public class Generator {
 	
 	
 	public static void main(String[] args) {
-		new Generator().hr01Dao();
+		//new Generator().hr01Dao();
 		
 		//test__HR01();
-		//test__HR_BUMEN();
+		test__HR_BUMEN();
 	}
 	
 //	public static void main(String[] args) {

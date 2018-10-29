@@ -1,8 +1,16 @@
-package trans;
+package utils;
 
 import org.hibernate.*;
 import org.hibernate.cfg.*;
 
+/**
+ * 使用 xml文件 或 annotation 描述表结构的, 都可以使用该类获得 SessionFactory
+ * 
+ * @author hs
+ * 
+ * @version 20181020
+ *
+ */
 public class HibernateAnnotationUtil {
 
     private static final SessionFactory sessionFactory;

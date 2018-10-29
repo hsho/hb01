@@ -30,11 +30,13 @@
         <property name="show_sql">true</property>
 
         <!-- Drop and re-create the database schema on startup -->
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">create</property><!-- 如果不要重新建表,需注释该行 -->
 
-        <mapping resource="beans/HR01.hbm.xml"/>
-        <mapping resource="beans/HR02.hbm.xml"/>
-        <!-- <mapping class="beans.HR_BUMEN"/> -->
+        <!-- <mapping resource="beans/HR01.hbm.xml"/> -->
+        <!-- <mapping resource="beans/HR02.hbm.xml"/> -->
+        <mapping class="beans.HR01"/>
+        <mapping class="beans.HR02"/>
+        <mapping class="beans.BuMen"/>
 
     </session-factory>
 

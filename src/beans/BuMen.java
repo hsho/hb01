@@ -19,6 +19,7 @@ public class BuMen {
      */
     @Id
     @Column(name = "BMNO")
+    @Length(max=10)
     public java.lang.String getBMNO() {
         return BMNO;
     }

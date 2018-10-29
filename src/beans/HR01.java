@@ -15,6 +15,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
+import org.hibernate.validator.Length;
 
 
 
@@ -43,7 +44,6 @@ public class HR01 implements Serializable {
 	
 	private Set<HR02> hr02s = new HashSet<HR02>();
 	
-	
 	/**
 	 * 部门岗位对应的班别
 	 * 
@@ -63,7 +63,9 @@ public class HR01 implements Serializable {
 	
 	
 	
-	public HR01() {}
+	public HR01() {
+		super();
+	}
 	
 	
 	/**
@@ -72,7 +74,9 @@ public class HR01 implements Serializable {
 	 * @return the dept
 	 */
 	@Id
-    @Column(name = "DEPT")
+    //@Column(name = "DEPT", columnDefinition="comment='部门代号'")
+	@Column(name = "DEPT")
+	@Length(max=30)
 	public String getDept() {
 		return dept;
 	}
@@ -90,6 +94,7 @@ public class HR01 implements Serializable {
 	 * @return the name
 	 */
 	@Column(name = "NAME")
+	@Length(max=100)
 	public String getName() {
 		return name;
 	}
@@ -108,6 +113,7 @@ public class HR01 implements Serializable {
 	 */
 	@Column(name = "PDEPT")
 	@JoinColumn()
+	@Length(max=30)
 	public String getPdept() {
 		return pdept;
 	}
