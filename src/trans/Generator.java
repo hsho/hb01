@@ -2,9 +2,11 @@ package trans;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.engine.SessionImplementor;
 import org.hibernate.impl.QueryImpl;
 
@@ -92,8 +94,46 @@ public class Generator {
 		//new Generator().hr01Dao();
 		
 		//test__HR01();
-		test__HR_BUMEN();
+//		test__HR_BUMEN();
+		daoTest();
 	}
+	
+	
+	public static void daoTest() {
+		SessionFactory sessionFactory = HibernateAnnotationUtil.getSessionFactory();
+		Session session = sessionFactory.getCurrentSession();
+		
+		session.beginTransaction();
+		
+		
+		BuMen bumen1 = new BuMen();
+		bumen1.setBMNO("00");
+		bumen1.setPBMNO("00");
+		bumen1.setBMNM("DEPARTMENT 00");
+		session.save(bumen1);
+		
+		BuMen bumen2 = new BuMen();
+		bumen2.setBMNO("01");
+		bumen2.setPBMNO("00");
+		bumen2.setBMNM("DEPARTMENT 00");
+		session.save(bumen2);
+		
+		Criteria criteria = session.createCriteria(BuMen.class);
+		Order order = Order.desc("BMNO");
+		criteria.addOrder(order);
+		List<BuMen> bumens = criteria.list();
+		for(BuMen bumen : bumens) {
+			System.err.println(bumen.getBMNO() + " : " + bumen.getPBMNO() + " : " + bumen.getBMNM());
+		}
+		
+		
+		session.getTransaction().commit();
+		
+		HibernateAnnotationUtil.getSessionFactory().close();
+	}
+	
+	
+	
 	
 //	public static void main(String[] args) {
 //		SessionFactory  sessionFactory = HibernateUtil.getSessionFactory();
