@@ -124,7 +124,7 @@ public class HR02 implements Serializable {
 	 * 
 	 * @return the remark
 	 */
-	@Length(max=50)
+	@Length(max = 50)
 	@Column(name = "REMARK")
 	public String getRemark() {
 		return remark;
@@ -144,7 +144,7 @@ public class HR02 implements Serializable {
 	 * @return the beg1
 	 */
 	@Column(name = "BEG1")
-	@Length(max=4)
+	@Length(max = 4)
 	public String getBeg1() {
 		return beg1;
 	}
@@ -162,7 +162,7 @@ public class HR02 implements Serializable {
 	 * @return the end1
 	 */
 	@Column(name = "END1")
-	@Length(max=4)
+	@Length(max = 4)
 	public String getEnd1() {
 		return end1;
 	}
@@ -180,7 +180,7 @@ public class HR02 implements Serializable {
 	 * @return the beg2
 	 */
 	@Column(name = "BEG2")
-	@Length(max=4)
+	@Length(max = 4)
 	public String getBeg2() {
 		return beg2;
 	}
@@ -198,7 +198,7 @@ public class HR02 implements Serializable {
 	 * @return the end2
 	 */
 	@Column(name = "END2")
-	@Length(max=4)
+	@Length(max = 4)
 	public String getEnd2() {
 		return end2;
 	}
@@ -216,7 +216,7 @@ public class HR02 implements Serializable {
 	 * @return the beg3
 	 */
 	@Column(name = "BEG3")
-	@Length(max=4)
+	@Length(max = 4)
 	public String getBeg3() {
 		return beg3;
 	}
@@ -234,7 +234,7 @@ public class HR02 implements Serializable {
 	 * @return the end3
 	 */
 	@Column(name = "END3")
-	@Length(max=4)
+	@Length(max = 4)
 	public String getEnd3() {
 		return end3;
 	}
@@ -252,7 +252,7 @@ public class HR02 implements Serializable {
 	 * @return the beg4
 	 */
 	@Column(name = "BEG4")
-	@Length(max=4)
+	@Length(max = 4)
 	public String getBeg4() {
 		return beg4;
 	}
@@ -270,7 +270,7 @@ public class HR02 implements Serializable {
 	 * @return the end4
 	 */
 	@Column(name = "END4")
-	@Length(max=4)
+	@Length(max = 4)
 	public String getEnd4() {
 		return end4;
 	}

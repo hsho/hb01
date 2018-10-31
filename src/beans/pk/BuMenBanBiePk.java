@@ -2,11 +2,14 @@ package beans.pk;
 import java.io.Serializable;
 import javax.persistence.*;
 import org.apache.commons.lang.builder.*;
-import org.hibernate.validator.*;
+/**
+ * 部门班别
+ */
+@SuppressWarnings("serial")
 @Embeddable
 public class BuMenBanBiePk implements Serializable {
-    private java.lang.String BMNO;	//部???
-    private java.lang.String BBNO;	//班?序?
+    private java.lang.String BMNO;	//部门编号
+    private java.lang.String BBNO;	//班别序号
     public BuMenBanBiePk() {
         super();
     }
@@ -17,31 +20,27 @@ public class BuMenBanBiePk implements Serializable {
     }
 
     /**
-     * 取得部???
-     * @returnBMNO 部???
+     * @returnBMNO 部门编号
      */
     @Column(name = "BMNO", length = 10)
     public java.lang.String getBMNO() {
         return BMNO;
     }
     /**
-     * 設定部???
-     * @param BMNO 部???
+     * @param BMNO 部门编号
      */
     public void setBMNO(java.lang.String BMNO) {
         this.BMNO = BMNO;
     }
     /**
-     * 取得班?序?
-     * @returnBBNO 班?序?
+     * @returnBBNO 班别序号
      */
     @Column(name = "BBNO", length = 1)
     public java.lang.String getBBNO() {
         return BBNO;
     }
     /**
-     * 設定班?序?
-     * @param BBNO 班?序?
+     * @param BBNO 班别序号
      */
     public void setBBNO(java.lang.String BBNO) {
         this.BBNO = BBNO;

@@ -9,36 +9,33 @@ import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 import javax.persistence.Column;
 /**
-* 人?
+* 人员
 **/
 @Entity
 @Table(name = "HR_RENYUAN")
 public class RenYuan {
-    private java.lang.String IDNO;	//身份??
-    private java.lang.String NAME;	//姓名
-    private java.lang.String GENDER;	//性?
-    private java.lang.String PHONE;	//?人?系方式
-    private java.lang.String EMAIL;	//?人?箱
-    private XueWei EDCA;	//??
-    private java.lang.String DEGREE;	//?位
+    private java.lang.String IDNO;		//身份证号
+    private java.lang.String NAME;		//姓名
+    private java.lang.String GENDER;	//性别
+    private java.lang.String PHONE;		//个人联系方式
+    private java.lang.String EMAIL;		//个人邮箱
+    private java.lang.String EDCA;		//学历代号
+    private java.lang.String DEGREE;	//学位代号
     /**
-     * 取得身份??
-     * @return IDNO 身份??
+     * @return IDNO 身份证号
      */
     @Id
-    @Column(name = "IDNO")
+    @Column(name = "IDNO", length = 18)
     public java.lang.String getIDNO() {
         return IDNO;
     }
     /**
-     * 設定身份??
-     * @param IDNO 身份??
+     * @param IDNO 身份证号
      */
     public void setIDNO(java.lang.String IDNO) {
         this.IDNO = IDNO;
     }
     /**
-     * 取得姓名
      * @return NAME 姓名
      */
     @Length(max = 50)
@@ -47,31 +44,26 @@ public class RenYuan {
         return NAME;
     }
     /**
-     * 設定姓名
      * @param NAME 姓名
      */
     public void setNAME(java.lang.String NAME) {
         this.NAME = NAME;
     }
     /**
-     * 取得性?
-     * @return GENDER 性?
+     * @return GENDER 性别
      */
-    @Length(max = 1)
-    @Column(name = "GENDER")
+    @Column(name = "GENDER", length = 1)
     public java.lang.String getGENDER() {
         return GENDER;
     }
     /**
-     * 設定性?
-     * @param GENDER 性?
+     * @param GENDER 性别
      */
     public void setGENDER(java.lang.String GENDER) {
         this.GENDER = GENDER;
     }
     /**
-     * 取得?人?系方式
-     * @return PHONE ?人?系方式
+     * @return PHONE 个人联系方式
      */
     @Length(max = 50)
     @Column(name = "PHONE")
@@ -79,15 +71,13 @@ public class RenYuan {
         return PHONE;
     }
     /**
-     * 設定?人?系方式
-     * @param PHONE ?人?系方式
+     * @param PHONE 个人联系方式
      */
     public void setPHONE(java.lang.String PHONE) {
         this.PHONE = PHONE;
     }
     /**
-     * 取得?人?箱
-     * @return EMAIL ?人?箱
+     * @return EMAIL 个人邮箱
      */
     @Length(max = 100)
     @Column(name = "EMAIL")
@@ -95,44 +85,73 @@ public class RenYuan {
         return EMAIL;
     }
     /**
-     * 設定?人?箱
-     * @param EMAIL ?人?箱
+     * @param EMAIL 个人邮箱
      */
     public void setEMAIL(java.lang.String EMAIL) {
         this.EMAIL = EMAIL;
     }
     /**
-     * 取得??
-     * @return EDCA ??
+     * @return EDCA 学历代号
      */
-    @Length(max = 1)
-    @ManyToOne
-    @JoinColumn(name = "EDCA")
-    @NotFound(action=NotFoundAction.IGNORE)
-    public XueWei getEDCA() {
+    @Column(name = "EDCA", length = 1)
+    public java.lang.String getEDCA() {
         return EDCA;
     }
     /**
-     * 設定??
-     * @param EDCA ??
+     * @param EDCA 学历代号
      */
-    public void setEDCA(XueWei EDCA) {
+    public void setEDCA(java.lang.String EDCA) {
         this.EDCA = EDCA;
     }
     /**
-     * 取得?位
-     * @return DEGREE ?位
+     * @return DEGREE 学位代号
      */
-    @Length(max = 1)
-    @Column(name = "DEGREE")
+    @Column(name = "DEGREE", length = 1)
     public java.lang.String getDEGREE() {
         return DEGREE;
     }
     /**
-     * 設定?位
-     * @param DEGREE ?位
+     * @param DEGREE 学位代号
      */
     public void setDEGREE(java.lang.String DEGREE) {
         this.DEGREE = DEGREE;
     }
+    
+    
+    private XueLi xueli;	//学历
+    /**
+     * @return xueli 学历
+     */
+    @ManyToOne
+    @JoinColumn(name = "EDCA", referencedColumnName = "EDCA", insertable = false, updatable = false)
+    @NotFound(action = NotFoundAction.IGNORE)
+    public XueLi getXueli() {
+    	return xueli;
+    }
+    /**
+     * @param xueli 学历
+     */
+    public void setXueli(XueLi xueli) {
+    	this.xueli = xueli;
+    }
+    
+    
+    
+    private XueWei xuewei;	//学位
+    /**
+     * @return xuewei 学位
+     */
+    @ManyToOne
+    @JoinColumn(name = "DEGREE", referencedColumnName = "DEGREE", insertable = false, updatable = false)
+    @NotFound(action = NotFoundAction.IGNORE)
+    public XueWei getXueWei() {
+    	return xuewei;
+    }
+    /**
+     * @param xuewei 学位
+     */
+    public void setXueWei(XueWei xuewei) {
+    	this.xuewei = xuewei;
+    }
+    
 }

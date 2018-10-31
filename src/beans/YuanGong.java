@@ -1,98 +1,94 @@
 package beans;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
+
 import org.hibernate.validator.Length;
+
+import beans.pk.YuanGongPk;
+
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 import javax.persistence.Column;
 /**
-* ?工
+* 员工
 **/
 @Entity
-@Table(name = "HR_YUANGONG")
+@Table(name = "HR_YUANGONG"
+//	,uniqueConstraints = {@UniqueConstraint(columnNames = {"BMNO", "ZWNO", "ENO"})}
+		)
+@IdClass(YuanGongPk.class)
 public class YuanGong {
-    private java.lang.String ENO;	//工?
-    private RenYuan IDNO;	//身份??
-    private BuMenZhiWu BMNO;	//部???
-    private BuMenZhiWu ZWNO;	//????
-    private java.lang.String PHONE;	//?公??
-    private java.lang.String EMAIL;	//?公?箱
+    private java.lang.String ENO;	//工号
+    private java.lang.String IDNO;	//身份证号
+    private java.lang.String BMNO;	//部门编号
+    private java.lang.String ZWNO;	//职务编号
+    private java.lang.String PHONE;	//办公电话
+    private java.lang.String EMAIL;	//办公邮箱
     /**
-     * 取得工?
-     * @return ENO 工?
+     * @return ENO 工号
      */
     @Id
-    @Column(name = "ENO")
+    @Column(name = "ENO", length = 10)
     public java.lang.String getENO() {
         return ENO;
     }
     /**
-     * 設定工?
-     * @param ENO 工?
+     * @param ENO 工号
      */
     public void setENO(java.lang.String ENO) {
         this.ENO = ENO;
     }
     /**
-     * 取得身份??
-     * @return IDNO 身份??
+     * @return IDNO 身份证号
      */
-    @Length(max = 18)
-    @ManyToOne
-    @JoinColumn(name = "IDNO")
-    @NotFound(action=NotFoundAction.IGNORE)
-    public RenYuan getIDNO() {
+    @Column(name = "IDNO", length = 18)
+    public java.lang.String getIDNO() {
         return IDNO;
     }
     /**
-     * 設定身份??
-     * @param IDNO 身份??
+     * @param IDNO 身份证号
      */
-    public void setIDNO(RenYuan IDNO) {
+    public void setIDNO(java.lang.String IDNO) {
         this.IDNO = IDNO;
     }
     /**
-     * 取得部???
-     * @return BMNO 部???
+     * @return BMNO 部门编号
      */
-    @Length(max = 10)
-    @ManyToOne
-    @JoinColumn(name = "BMNO")
-    @NotFound(action=NotFoundAction.IGNORE)
-    public BuMenZhiWu getBMNO() {
+    @Id
+    @Column(name = "BMNO", length = 10)
+    public java.lang.String getBMNO() {
         return BMNO;
     }
     /**
-     * 設定部???
-     * @param BMNO 部???
+     * @param BMNO 部门编号
      */
-    public void setBMNO(BuMenZhiWu BMNO) {
+    public void setBMNO(java.lang.String BMNO) {
         this.BMNO = BMNO;
     }
     /**
-     * 取得????
-     * @return ZWNO ????
+     * @return ZWNO 职务编号
      */
-    @Length(max = 4)
-    @ManyToOne
-    @JoinColumn(name = "ZWNO")
-    @NotFound(action=NotFoundAction.IGNORE)
-    public BuMenZhiWu getZWNO() {
+    @Id
+    @Column(name = "ZWNO", length = 4)
+    public java.lang.String getZWNO() {
         return ZWNO;
     }
     /**
-     * 設定????
-     * @param ZWNO ????
+     * @param ZWNO 职务编号
      */
-    public void setZWNO(BuMenZhiWu ZWNO) {
+    public void setZWNO(java.lang.String ZWNO) {
         this.ZWNO = ZWNO;
     }
     /**
-     * 取得?公??
-     * @return PHONE ?公??
+     * @return PHONE 办公电话
      */
     @Length(max = 50)
     @Column(name = "PHONE")
@@ -100,15 +96,13 @@ public class YuanGong {
         return PHONE;
     }
     /**
-     * 設定?公??
-     * @param PHONE ?公??
+     * @param PHONE 办公电话
      */
     public void setPHONE(java.lang.String PHONE) {
         this.PHONE = PHONE;
     }
     /**
-     * 取得?公?箱
-     * @return EMAIL ?公?箱
+     * @return EMAIL 办公邮箱
      */
     @Length(max = 100)
     @Column(name = "EMAIL")
@@ -116,10 +110,50 @@ public class YuanGong {
         return EMAIL;
     }
     /**
-     * 設定?公?箱
-     * @param EMAIL ?公?箱
+     * @param EMAIL 办公邮箱
      */
     public void setEMAIL(java.lang.String EMAIL) {
         this.EMAIL = EMAIL;
     }
+    
+    
+    private RenYuan renyuan;		//人员
+    /**
+     * @return renyuan 人员
+     */
+    @OneToOne
+    @JoinColumn(name = "IDNO", referencedColumnName = "IDNO", insertable = false, updatable = false)
+    @NotFound(action = NotFoundAction.IGNORE)
+    public RenYuan getRenyuan() {
+    	return renyuan;
+    }
+    /**
+     * @param renyuan 人员
+     */
+    public void setRenyuan(RenYuan renyuan) {
+    	this.renyuan = renyuan;
+    }
+    
+    
+    
+    private BuMenZhiWu bumenzhiwu;	//部门职务
+    /**
+     * @return bumenzhiwu 部门职务
+     */
+    @ManyToOne
+    @JoinColumns({
+    	@JoinColumn(name = "BMNO", referencedColumnName = "BMNO", insertable = false, updatable = false),
+    	@JoinColumn(name = "ZWNO", referencedColumnName = "ZWNO", insertable = false, updatable = false)
+    	})
+    @NotFound(action = NotFoundAction.IGNORE)
+    public BuMenZhiWu getBumenzhiwu() {
+    	return bumenzhiwu;
+    }
+    /**
+     * @param bumenzhiwu 部门职务
+     */
+    public void setBumenzhiwu(BuMenZhiWu bumenzhiwu) {
+    	this.bumenzhiwu = bumenzhiwu;
+    }
+    
 }

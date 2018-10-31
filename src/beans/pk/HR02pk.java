@@ -14,7 +14,7 @@ import org.hibernate.validator.Length;
 
 
 /**
- * 部门岗位班别的主键
+ * 部门岗位班别 主键
  * 
  * @author hs
  * 
@@ -23,15 +23,11 @@ import org.hibernate.validator.Length;
  */
 @Entity
 @Table(name = "HR02")
+@SuppressWarnings("serial")
 public class HR02pk implements Serializable {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 5689996485399116989L;
-	
-	private String dept;
-	private String tid;
+	private String dept;	//部门代号
+	private String tid;		//班别代号
 	
 	
 	public HR02pk(String dept, String tid) {
@@ -42,17 +38,14 @@ public class HR02pk implements Serializable {
 	
 	
 	/**
-	 * 部门代号
-	 * 
-	 * @return the dept
+	 * @return dept 部门代号
 	 */
-	@Column(name = "DEPT")
-	@Length(max=30)
+	@Column(name = "DEPT", length = 30)
 	public String getDept() {
 		return dept;
 	}
 	/**
-	 * @param dept the dept to set
+	 * @param dept 部门代号
 	 */
 	public void setDept(String dept) {
 		this.dept = dept;
@@ -60,9 +53,7 @@ public class HR02pk implements Serializable {
 	
 	
 	/**
-	 * 班别代号
-	 * 
-	 * @return the tid
+	 * @return tid 班别代号
 	 */
 	@Column(name = "TID")
 	@Length(max=1)
@@ -70,7 +61,7 @@ public class HR02pk implements Serializable {
 		return tid;
 	}
 	/**
-	 * @param tid the tid to set
+	 * @param tid 班别代号
 	 */
 	public void setTid(String tid) {
 		this.tid = tid;

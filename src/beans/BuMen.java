@@ -10,21 +10,20 @@ import javax.persistence.Column;
 @Entity
 @Table(name = "HR_BUMEN")
 public class BuMen {
-    private java.lang.String BMNO;
-    private java.lang.String PBMNO;
-    private java.lang.String BMNM;
-    private java.lang.String BMDETAIL;
+    private java.lang.String BMNO;		//部门编号
+    private java.lang.String PBMNO;		//上级部门编号
+    private java.lang.String BMNM;		//部门名称
+    private java.lang.String BMDETAIL;	//部门详细
     /**
      * @return BMNO 部门编号
      */
     @Id
-    @Column(name = "BMNO")
-    @Length(max=10)
+    @Column(name = "BMNO", length = 10)
     public java.lang.String getBMNO() {
         return BMNO;
     }
     /**
-     * @param BMNO 
+     * @param BMNO 部门编号
      */
     public void setBMNO(java.lang.String BMNO) {
         this.BMNO = BMNO;
@@ -32,13 +31,12 @@ public class BuMen {
     /**
      * @return PBMNO 上级部门编号
      */
-    @Length(max = 10)
-    @Column(name = "PBMNO")
+    @Column(name = "PBMNO", length = 10)
     public java.lang.String getPBMNO() {
         return PBMNO;
     }
     /**
-     * @param PBMNO 
+     * @param PBMNO 上级部门编号
      */
     public void setPBMNO(java.lang.String PBMNO) {
         this.PBMNO = PBMNO;
@@ -52,7 +50,7 @@ public class BuMen {
         return BMNM;
     }
     /**
-     * @param BMNM 
+     * @param BMNM 部门名称
      */
     public void setBMNM(java.lang.String BMNM) {
         this.BMNM = BMNM;
@@ -66,7 +64,7 @@ public class BuMen {
         return BMDETAIL;
     }
     /**
-     * @param BMDETAIL 
+     * @param BMDETAIL 部门详细
      */
     public void setBMDETAIL(java.lang.String BMDETAIL) {
         this.BMDETAIL = BMDETAIL;

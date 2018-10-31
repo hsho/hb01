@@ -76,7 +76,7 @@ public class HR01 implements Serializable {
 	@Id
     //@Column(name = "DEPT", columnDefinition="comment='部门代号'")
 	@Column(name = "DEPT")
-	@Length(max=30)
+	@Length(max = 30)
 	public String getDept() {
 		return dept;
 	}
@@ -94,7 +94,7 @@ public class HR01 implements Serializable {
 	 * @return the name
 	 */
 	@Column(name = "NAME")
-	@Length(max=100)
+	@Length(max = 100)
 	public String getName() {
 		return name;
 	}
@@ -113,7 +113,7 @@ public class HR01 implements Serializable {
 	 */
 	@Column(name = "PDEPT")
 	@JoinColumn()
-	@Length(max=30)
+	@Length(max = 30)
 	public String getPdept() {
 		return pdept;
 	}

@@ -13,7 +13,7 @@ import utils.HibernateAnnotationUtil;
 import utils.HibernateUtil;
 import beans.BuMen;
 
-@SuppressWarnings("rawtypes")
+@SuppressWarnings({"rawtypes", "unchecked"})
 public class Generator {
 	
 	public void insertHR01(Session session, String dept, String name, String pdept) {
@@ -78,10 +78,10 @@ public class Generator {
 		SessionFactory sessionFactory = HibernateAnnotationUtil.getSessionFactory();
 		Session session = sessionFactory.getCurrentSession();
 		
-		session.beginTransaction();
-		generator.insertHR_BUMEN(session, "00", "00", null, null);
-		generator.insertHR_BUMEN(session, "0001", "00", null, null);
-		session.getTransaction().commit();
+//		session.beginTransaction();
+//		generator.insertHR_BUMEN(session, "00", "00", null, null);
+//		generator.insertHR_BUMEN(session, "0001", "00", null, null);
+//		session.getTransaction().commit();
 		
 		HibernateAnnotationUtil.getSessionFactory().close();
 	}

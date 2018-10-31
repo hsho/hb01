@@ -5,33 +5,30 @@ import javax.persistence.Id;
 import org.hibernate.validator.Length;
 import javax.persistence.Column;
 /**
-* ??
+* 职务
 **/
 @Entity
 @Table(name = "HR_ZHIWU")
 public class ZhiWu {
-    private java.lang.String ZWNO;	//????
-    private java.lang.String ZWNM;	//??名?
-    private java.lang.String ZWDETAIL;	//????
+    private java.lang.String ZWNO;		//职务编号
+    private java.lang.String ZWNM;		//职务名称
+    private java.lang.String ZWDETAIL;	//职务描述
     /**
-     * 取得????
-     * @return ZWNO ????
+     * @return ZWNO 职务编号
      */
     @Id
-    @Column(name = "ZWNO")
+    @Column(name = "ZWNO", length = 4)
     public java.lang.String getZWNO() {
         return ZWNO;
     }
     /**
-     * 設定????
-     * @param ZWNO ????
+     * @param ZWNO 职务编号
      */
     public void setZWNO(java.lang.String ZWNO) {
         this.ZWNO = ZWNO;
     }
     /**
-     * 取得??名?
-     * @return ZWNM ??名?
+     * @return ZWNM 职务名称
      */
     @Length(max = 100)
     @Column(name = "ZWNM")
@@ -39,15 +36,13 @@ public class ZhiWu {
         return ZWNM;
     }
     /**
-     * 設定??名?
-     * @param ZWNM ??名?
+     * @param ZWNM 职务名称
      */
     public void setZWNM(java.lang.String ZWNM) {
         this.ZWNM = ZWNM;
     }
     /**
-     * 取得????
-     * @return ZWDETAIL ????
+     * @return ZWDETAIL 职务描述
      */
     @Length(max = 500)
     @Column(name = "ZWDETAIL")
@@ -55,8 +50,7 @@ public class ZhiWu {
         return ZWDETAIL;
     }
     /**
-     * 設定????
-     * @param ZWDETAIL ????
+     * @param ZWDETAIL 职务描述
      */
     public void setZWDETAIL(java.lang.String ZWDETAIL) {
         this.ZWDETAIL = ZWDETAIL;
